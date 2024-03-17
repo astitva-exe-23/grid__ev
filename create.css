@@ -1,0 +1,54 @@
+html
+{
+    height: 90%;
+    width: 100%;
+}
+
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 99%;
+    width: 100%;
+    background-color: #CBE4DE;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20%;
+    align-items: center;
+    text-align: center;
+}
+.inputs
+{
+    width: 100%;
+}
+input
+{
+    margin-top: 20px;
+    border: none;
+    width: 60%;
+    background-color: #F5FFF6;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+    border-radius: 100px;
+    font-weight: 400;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    font-size: 30px;
+}
+input::placeholder
+{
+    color: black;
+    font-weight: 500;
+}
+div
+{
+    font-size: 100px;
+    margin-bottom: 20%;
+}
+#sub
+{
+    background-color: #CBE4DE;
+    border: none;
+    box-shadow: 0 0 0;
+    text-align: right;
+}

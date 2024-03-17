@@ -1,0 +1,76 @@
+html
+{
+    height: 90%;
+    width: 100%;
+}
+
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 99%;
+    width: 100%;
+    background-color: #CBE4DE;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20%;
+    align-items: center;
+    text-align: center;
+}
+.header
+{
+    font-size: 80px;
+}
+.text
+{
+    margin-top: 20px;
+    font-size: 20px; 
+}
+#name,#pass
+{
+    margin-top: 20px;
+    border: none;
+    width: 75%;
+    background-color: #F5FFF6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    border-radius: 100px;
+    font-weight: 400;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+#name
+{
+    margin-top: 50px;
+}
+#name::placeholder,#pass::placeholder
+{
+    font-weight: 500;
+    color: black;
+}
+
+
+.forgot
+{
+    margin-top: 15px;
+    margin-right: 10%;
+    text-align: right;
+}
+.sub
+{
+    margin-top: 50px;
+    margin-right: 10%;
+    text-align: right;
+    font-size: 30px;
+}
+#submit
+{
+    background-color: #CBE4DE;
+    border: none;
+    border-radius: 20px;
+}
+.create
+{
+    position: fixed;
+    bottom: 10%;
+}
