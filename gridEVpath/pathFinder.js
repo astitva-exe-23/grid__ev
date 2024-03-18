@@ -236,53 +236,58 @@ function filterStationsByStandard(stations, chargingStandard) {
   // ... other functions from previous explanations (filterStationsInCircle, etc.)
   
 
-function findOptimalStation(chargeStandard, origin, response, currentRange) {
-    const filtererdByProximity = sendRequestOverviewPath(origin, response);
-    const filteredByChargingStandard = filterStationsByStandard(filtererdByProximity, chargeStandard);
+  function findOptimalStation(chargeStandard, origin, response, currentRange) {
+    const filteredByProximity = sendRequestOverviewPath(origin, response);
+    const filteredByChargingStandard = filterStationsByStandard(filteredByProximity, chargeStandard);
     const sortedStations = SortStations(filteredByChargingStandard);
-    const travellableRange = 0.7*currentRange;
-    for(var i = 0; i < sortedStations.length(); i++)
-    {
-        const firstStation = sortedStations[i];
-        var lat = firstStation.latitude;
-        var lng = firstStation.longitude;
-        var min = [lat, lng];
-        if(Math.sqrt(Math.pow(lat-origin[0], 2)+Math.pow(lat-origin[0], 2))<=travellableRange)
-        {
-            var loc = [lat, lng];
-            break;
-        }    
+    const travellableRange = 0.7 * currentRange;
+  
+    for (let i = 0; i < sortedStations.length; i++) { // Iterate through sorted stations
+      const firstStation = sortedStations[i];
+      const lat = firstStation.latitude;
+      const lng = firstStation.longitude;
+  
+      // Calculate distance from origin (assuming you have a function to do this)
+      const distanceToStation = calculateDistance(origin[0], origin[1], lat, lng);
+  
+      if (distanceToStation <= travellableRange) {
+        return [lat, lng]; // Return station coordinates if within range
+      }
     }
-    
-    return loc;
-}
+  
+    return null; // No station found within range
+  }
 function sendPath (respone)
 {
     return respone;
 }
-function pathFindingAlgorithm (origin, destination, currentCharge, maxRange, chargeStandard)
-{
 
-    var response = sendRequest(origin, destination, []);
-    const currentRange = currentCharge*maxRange/100;
-    var optimalStation = [];
-    if(currentRange<distance)
-    {
-        optimalStation = findOptimalStation(chargeStandard, origin, response, currentRange);
-        response = sendRequest(origin, destination, optimalStation)
-    }
-    else
-    {
-        var newRange = currentRange - 0.3*maxRange;
-        if(newRange<distance)
-        {
-            optimalStation = findOptimalStation();
-            response = sendRequest(origin, destination, optimalStation)
-        }
-        else
-        {
-            sendPath(response);
-        }
+function pathFindingAlgorithm(origin, destination, currentCharge, maxRange, chargeStandard) {
+  const response = sendRequest(origin, destination, []);
+  const currentRange = currentCharge * maxRange / 100;
+  let optimalStation = findOptimalStation(chargeStandard, origin, response, currentRange);
 
+  if (currentRange < distance) { // Check if current range is enough
+    if (optimalStation) { // If optimal station found
+      response = sendRequest(origin, destination, optimalStation); // Update route with station
+    } else {
+      console.error("No suitable charging station found within range.");
+      // Handle case where no station is found
     }
+  }
+
+  // ... process or return the final response (replace with your logic)
+  return response;
 }
+
+function main()
+{
+  origin = [20.69814707433358, 77.00440792624494];
+  destination = [19.054289856431033, 72.8454073286699];
+  currentCharge = 80;
+  maxRange = 450;
+  chargingStandard = "05V2LHG";
+  console.log(pathFindingAlgorithm(origin, destination, currentCharge, maxRange, chargingStandard));
+}
+
+main();
