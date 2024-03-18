@@ -1,4 +1,5 @@
 var carData = {
+  Brand:["Model"],
     Audi: [
         "SQ8 e-tron","SQ8 e-tron Sportback","e-tron 55 quattro",
         "e-tron 55 quattro","Q4 e-tron 55 quattro",
@@ -65,28 +66,22 @@ var carData = {
        XPENG:["P7 AWD Performance", "P7 Wing Edition", "G9 RWD Long", "G9 RWD Standard", "P7 RWD Long"],
        Zeekr:["001 Long RWD"]
 }
-
-// window.onload = function(){
-//     const brands = document.getE1ementById( 'brand');
-//     const model = document.getE1ementById('state');
-//     const selects = document.querySelectorAll('select');
-//     model.disabled = true;
-//     selects.forEach(select => {
-//         if(select.disabled == true)
-//         {
-//             select.style.cursor="auto"
-//         }
-//     })
-//     for(let brand in ModelInfo){
-//         brands.options[brand.options.length]= new Option(brand, brand)
-
-//         model.onchange = (e) => {
-//             model.disabled = false;
-//         }
-//     }
-// }
 const brandDropdown = document.getElementById('brand');
 const modelDropdown = document.getElementById('model');
+
+const yearDropdown = document.getElementById('year');
+const currentYear = new Date().getFullYear();
+const startYear = 1950;
+const endYear = currentYear;
+for (let year = startYear; year <= endYear; year++) {
+  const option = document.createElement('option');
+  option.value = year;
+  option.textContent = year;
+  yearDropdown.appendChild(option);
+  if (year === currentYear) {
+    option.selected = true;
+  }
+}
 
 
 
@@ -115,3 +110,68 @@ brandDropdown.addEventListener('change', function() {
 
 // Optional initial population (if any)
 populateModelDropdown(brandDropdown.value); // Based on pre-selected brand (if any)
+
+
+// vehicle.js
+
+// Function to retrieve stored username and password
+function getStoredCredentials() {
+  var username = localStorage.getItem("username");
+  var password = localStorage.getItem("password");
+  return { username, password };
+}
+
+// Function to make API request
+function makeAPIRequest(data) {
+  // Example: Sending a POST request using fetch API
+  fetch('http://192.168.238.204:3000/createAccount', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+  })
+  
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      //  return response.json();
+  })
+  .then(data => {
+      console.log('API Response:', data);
+      // Optionally, you can handle the response here
+  })
+  .catch(error => {
+      console.error('There was a problem with the API request:', error);
+  });
+}
+
+// Adding an event listener to the form submission
+document.getElementById("form").addEventListener("submit", function(event) {
+  // Preventing the default form submission behavior
+  event.preventDefault();
+
+  // Getting stored credentials
+  var { username, password } = getStoredCredentials();
+
+  // Getting form data
+  var brand = document.getElementById("brand").value;
+  var model = document.getElementById("model").value;
+  var year = document.getElementById("year").value;
+  var mileage = document.getElementById("mileage").value;
+
+  // Constructing data object
+  var data = {
+      username: username,
+      password: password,
+      brand: brand,
+      model: model,
+      year: year,
+      mileage: mileage
+  };
+  console.log(data)
+
+  // Making API request
+  makeAPIRequest(data);
+});

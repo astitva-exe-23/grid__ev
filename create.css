@@ -13,7 +13,7 @@ body
     padding: 10px;
     display: flex;
     flex-direction: column;
-    padding-top: 20%;
+    justify-content: center;
     align-items: center;
     text-align: center;
 }
@@ -27,13 +27,13 @@ input
     border: none;
     width: 60%;
     background-color: #F5FFF6;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
     border-radius: 100px;
     font-weight: 400;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
-    font-size: 30px;
+    font-size: 15px;
 }
 input::placeholder
 {
@@ -42,7 +42,7 @@ input::placeholder
 }
 div
 {
-    font-size: 100px;
+    font-size: 50px;
     margin-bottom: 20%;
 }
 #sub

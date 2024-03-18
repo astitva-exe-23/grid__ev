@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Add you Vehicle
+        </title>
+        <meta name="viewport" content="width=device-width,user-scalable=yes" />
+        <link rel="stylesheet" href="start_j.css">
+    </head>
+    <body>
+        <div class="nav"><img src="../GridEV/36.png" ></div>
+        
+        <div class="charging"><img src="../GridEV/clarity_battery-solid.png">50%</div>
+        <button class="charge">Charge Now?<img src=""></button>
+        <div class="info">
+            <div style="font-weight: 500;">
+                Next Stop<br>
+                <img src="../GridEV/carbon_charging-station-filled.png">
+            </div>
+            <div class="eta" style="display: flex;align-items: center;">
+                ETA : 15mins<br>
+                Distance: 10km<br>
+                Charge Time: 10 mins
+            </div>
+            <div id="resume" style="border: solid;border-color: #0E8388;border-radius: 20px;display: flex; flex-direction: column;padding: 10px; padding-left: 80px;">
+                
+            </div>
+        </div>
+        <button class="end">End journey</button>
+        <div id="map" style="width:100%; height:100%;"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuWO5VJoAJdriMblQCCzX4TN79n7pcmYM&libraries=places&callback=initMap" async defer></script>
+
+        <script src="start_j.js"></script>
+    </body>
+</html>

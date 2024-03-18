@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            End Journey
+        </title>
+        <meta name="viewport" content="width=device-width,user-scalable=yes" />
+
+    </head>
+    <body>
+        <form id="form">
+            <div class="nav">
+                <div style="display: flex;justify-content: center;align-items: center;"></div>
+                <div class="inputs">
+                    <div>
+                        <input type="text" placeholder="Search Destination" id="dest"><br>
+                    <input type="number" max="99" min="0" id="batp" placeholder="Battery Percentage">
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center;margin-left: 10px;"><input type="submit" value="Submit"></div>
+                    
+                </div>
+            </div>
+            
+        </form>
+        <script>
+            const success = (position) => {
+        console. log(position)
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        console.log(latitude);
+        console.log(longitude);
+        
+        }
+    const error = () => { console.log("Error"); }
+            navigator.geolocation.getCurrentPosition(success,error);
+    
+        </script>
+    </body>
+</html>

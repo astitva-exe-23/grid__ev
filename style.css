@@ -17,15 +17,20 @@ body
     align-items: center;
     text-align: center;
 }
-.inputs
+.header
 {
-    width: 100%;
+    font-size: 80px;
 }
-input
+.text
+{
+    margin-top: 20px;
+    font-size: 20px; 
+}
+#name,#pass
 {
     margin-top: 20px;
     border: none;
-    width: 60%;
+    width: 75%;
     background-color: #F5FFF6;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -33,22 +38,39 @@ input
     border-radius: 100px;
     font-weight: 400;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
-    font-size: 15px;
 }
-input::placeholder
+#name
 {
-    color: black;
+    margin-top: 50px;
+}
+#name::placeholder,#pass::placeholder
+{
     font-weight: 500;
+    color: black;
 }
-div
+
+
+.forgot
 {
-    font-size: 50px;
-    margin-bottom: 20%;
+    margin-top: 15px;
+    margin-right: 10%;
+    text-align: right;
 }
-#sub
+.sub
+{
+    margin-top: 50px;
+    margin-right: 10%;
+    text-align: right;
+    font-size: 30px;
+}
+#submit
 {
     background-color: #CBE4DE;
     border: none;
-    box-shadow: 0 0 0;
-    text-align: right;
+    border-radius: 20px;
+}
+.create
+{
+    position: fixed;
+    bottom: 10%;
 }

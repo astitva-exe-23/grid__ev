@@ -11,9 +11,10 @@
         <div>
             Add your<br> Vehicle
         </div>
-        <form>
+        <form id="form">
             <select id="brand">
-                <option value="Audi" selected>Audi</option>
+                <option selected>Brand</option>
+                <option value="Audi">Audi</option>
                 <option value="BMW">BMW</option>
                 <option value="BYD">BYD</option>
                 <option value="Citroen">Citroen</option>
@@ -60,10 +61,13 @@
                 <option value="Zeekr">Zeekr</option>
             </select>
             <select id="model">
-                <option>--Select Model--</option>
+                <option selected>Model</option>
             </select>
-            <input type="number" max="2024" min="2000" id="year">
-            <input type="text" id="mileage" >
+            <select id="year">
+                <option></option>
+            </select>
+            <input type="text" id="mileage" placeholder="Mileage">
+            <input type="submit" value="Start you Journey" id="sub">
         </form>
         <script src="vehicle.js"></script>
     </body>
